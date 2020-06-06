@@ -2,7 +2,7 @@
 
 #>
 $env:Path = "C:/msys64/usr/bin;$env:Path"
-$conf = "C:/msys64/etc/pacman_.conf"
+$conf = "C:/msys64/etc/pacman.conf"
 
 $raw = $(Get-Content -Path $conf -Raw) -replace '(?m)^CheckSpace', '#CheckSpace'
 Out-File -FilePath $conf -InputObject $raw
