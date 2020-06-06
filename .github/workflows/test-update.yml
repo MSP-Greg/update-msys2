@@ -14,12 +14,4 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Update MSYS2
-        run:  |
-          $env:Path = "C:/msys64/usr/bin;$env:Path"
-          $args = "--noconfirm", "--needed", "--noprogressbar"
-          pacman.exe -Sy $args msys2-runtime pacman
-          taskkill /f /fi "MODULES eq msys-2.0.dll"
-          pacman.exe -Sy $args msys2-runtime pacman
-          taskkill /f /fi "MODULES eq msys-2.0.dll"
-          pacman.exe -S $args base base-devel compression
-          pacman.exe -S $args mingw-w64-x86_64-toolchain
+        run:  ./update_msys2.ps1
