@@ -20,5 +20,4 @@ jobs:
           taskkill /f /fi "MODULES eq msys-2.0.dll"
           pacman -Sy --needed --noconfirm msys2-runtime pacman
           taskkill /f /fi "MODULES eq msys-2.0.dll"
-          pacman -Sy --needed --noconfirm base base-devel compression
-          taskkill /f /fi "MODULES eq msys-2.0.dll"
+          pacman -S --needed --noconfirm base base-devel compression
