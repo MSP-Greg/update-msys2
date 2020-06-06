@@ -1,0 +1,22 @@
+name: Install MSYS2
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    name: >-
+      Install MSYS2
+    runs-on: 'windows-latest'
+    strategy:
+      fail-fast: false
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Update MSYS2
+        run:  |
+          $env:Path = "C:/msys64/usr/bin;$env:Path"
+          pacman -Sy --needed --noconfirm msys2-runtime base
+          taskkill /f /fi "MODULES eq msys-2.0.dll"
+          pacman -Sy --needed --noconfirm msys2-runtime base base-devel compression
+          taskkill /f /fi "MODULES eq msys-2.0.dll"
