@@ -15,12 +15,11 @@ jobs:
 
       - name: Update MSYS2
         run:  |
-          $args = "--noconfirm --needed --noprogressbar"
-          $ErrorActionPreference = 'Continue'
           $env:Path = "C:/msys64/usr/bin;$env:Path"
-          pacman -Sy $args msys2-runtime pacman
+          $args = "--noconfirm", "--needed", "--noprogressbar"
+          pacman.exe -Sy $args msys2-runtime pacman
           taskkill /f /fi "MODULES eq msys-2.0.dll"
-          pacman -Sy $args msys2-runtime pacman
+          pacman.exe -Sy $args msys2-runtime pacman
           taskkill /f /fi "MODULES eq msys-2.0.dll"
-          pacman -S $args base base-devel compression
-          pacman -s $args mingw-w64-x86_64-toolchain
+          pacman.exe -S $args base base-devel compression
+          pacman.exe -S $args mingw-w64-x86_64-toolchain
