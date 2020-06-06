@@ -1,14 +1,18 @@
-name: Install MSYS2
+name: Update MSYS2
 
 on: [push, pull_request]
 
 jobs:
   build:
     name: >-
-      Install MSYS2
+      MSYS2 Update
     runs-on: 'windows-latest'
     strategy:
       fail-fast: false
+    matrix:
+      msystem: [ MINGW64, MINGW32 ]
+    env:
+      MSYSTEM: ${{ matrix.msystem }}
     steps:
       - name: Checkout
         uses: actions/checkout@v2
