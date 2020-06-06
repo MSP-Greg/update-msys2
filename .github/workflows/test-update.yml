@@ -9,8 +9,8 @@ jobs:
     runs-on: 'windows-latest'
     strategy:
       fail-fast: false
-    matrix:
-      msystem: [ MINGW64, MINGW32 ]
+      matrix:
+        msystem: [ MINGW64, MINGW32 ]
     env:
       MSYSTEM: ${{ matrix.msystem }}
     steps:
